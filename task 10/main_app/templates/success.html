@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Успешно!{% endblock %}
+{% block content %}
+<div class="success-message">
+    <h3>🎉 Поздравляем!</h3>
+    <p>Пользователь <strong>{{ user.name }}</strong> был успешно {% if action == 'created' %}создан{% else %}обновлен{% endif %}!</p>
+</div>
+
+<div class="user-card">
+    <h3>📋 Информация о пользователе</h3>
+    <div class="user-info">
+        <strong>👤 Имя:</strong> {{ user.name }}
+    </div>
+    <div class="user-info">
+        <strong>📧 Email:</strong> {{ user.email }}
+    </div>
+    <div class="user-info">
+        <strong>📱 Телефон:</strong> {{ user.phone }}
+    </div>
+    <div class="user-info">
+        <strong>🎂 Возраст:</strong> {{ user.age }} лет
+    </div>
+</div>
+
+<div class="actions">
+    <a href="{% url 'user_profile' user.id %}" class="btn btn-success">👁️ Посмотреть профиль</a>
+    <a href="{% url 'user_list' %}" class="btn">📋 Список пользователей</a>
+    <a href="{% url 'create_profile' %}" class="btn btn-warning">➕ Добавить еще</a>
+</div>
+
+<script src={% static "script_success.js" %}></script>
+ 
+{% endblock %}
